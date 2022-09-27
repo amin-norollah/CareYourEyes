@@ -1,0 +1,71 @@
+﻿<mah:MetroWindow x:Class="CareYourEyes.Popups.PopupWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                xmlns:local="clr-namespace:CareYourEyes.Popups"
+                mc:Ignorable="d"
+                 x:Name="MainPanel"
+                 WindowStyle="None"
+                 AllowsTransparency="True"
+                 WindowState="Maximized"        
+                 Title="popup_container"
+                 Height="600"
+                 Width="800"
+                 Background="Transparent">
+
+    <Grid Background="Transparent">
+        <Popup Margin="10,10,0,13" 
+               x:Name="Popup1"
+               Width="500" 
+               Height="480" 
+               IsOpen="false"
+               Placement="Center"
+               PlacementTarget="{Binding ElementName=MainPanel}"
+               PopupAnimation="Fade"
+               >
+            <Grid>
+                <Border x:Name="MainBorder" 
+                                BorderBrush="#ccc" 
+                                BorderThickness="2" 
+                                Background="#222">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36px"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="40px"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Menu -->
+                        <Grid Grid.Row="0" Margin="15,5">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Care Your Eyes" VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--main-->
+                        <StackPanel Grid.Row="1" Margin="40,0,40,0">
+                            <TextBlock  Name="txt_timer" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold"/>
+                            <Image Source="/rest-img.png" Width="200"></Image>
+                            <TextBlock Text="Take a break" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+
+
+                            <TextBlock Text="1) look at something 20 feet away," HorizontalAlignment="Center"/>
+                            <TextBlock Text="2) Blink often to refresh your eyes," HorizontalAlignment="Center"/>
+                            <TextBlock Text="3) Relax your eyes, close them and turn your eyes from side to side," HorizontalAlignment="Center"/>
+                            <TextBlock Text="4) Breathe deeply, do crunches on the chair," HorizontalAlignment="Center"/>
+                            <TextBlock Text="5) Sit up straight, bend your knees, and keep them together," HorizontalAlignment="Center"/>
+                            <TextBlock Text="6) Look at the distant landscape from the window." HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <!--control-->
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,6" HorizontalAlignment="Center">
+                            <Button Content="Close" Click="CloseButton_Click" Width="100" />
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
+    </Grid>
+</mah:MetroWindow>

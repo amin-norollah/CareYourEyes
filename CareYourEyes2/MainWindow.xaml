@@ -1,0 +1,127 @@
+﻿<mah:MetroWindow x:Class="CareYourEyes.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 mc:Ignorable="d"
+                 x:Name="MainPanel"
+                 ResizeMode="NoResize"
+                 WindowStyle="None"
+                 ShowTitleBar="False"
+                 ShowCloseButton="False"
+        
+                 WindowStartupLocation="CenterScreen"
+                 BorderThickness="0"
+                 MouseDown="MainPanel_MouseDown"
+                 AllowsTransparency="True"
+                 Background="Transparent"
+                 
+                 Height="260" Width="450">
+    <Border x:Name="MainBorder" 
+                                BorderBrush="#ccc" 
+                                BorderThickness="2" 
+                                CornerRadius="10" 
+                                Background="#222">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36px"/>
+                <RowDefinition Height="30px"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15px"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu -->
+            <Grid Grid.Row="0" Margin="15,5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock Text="Care Your Eyes" VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+
+                    <Button Margin="5,0" Padding="2" Click="Minimize_Button_Click">
+                        <iconPacks:PackIconFontAwesome 
+                                       Width="20"
+                                       Height="20"
+                                       Kind="WindowMinimizeRegular"
+                                       ToolTip="Minimize"/>
+                    </Button>
+                    <Button Margin="5,0" Padding="2" Click="Background_Button_Click">
+                        <iconPacks:PackIconFontAwesome 
+                                       Width="20"
+                                       Height="20"
+                                       Kind="CompressArrowsAltSolid"
+                                       ToolTip="Send to background"/>
+                    </Button>
+                    <Button Margin="5,0" Padding="2" Click="Close_Button_Click">
+                        <iconPacks:PackIconFontAwesome 
+                                       Width="20"
+                                       Height="20"
+                                       Kind="WindowCloseSolid"
+                                       ToolTip="Close application"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!--control-->
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="15,0">
+                <Button Content="Default" Click="Default_Click" Margin="3,0" Width="70"/>
+                <Button Content="Save" Click="Save_Click" Margin="3,0" Width="70"/>
+            </StackPanel>
+
+            <!-- Main part -->
+            <Grid Grid.Row="2" Margin="15,5">
+                <StackPanel>
+                    <!--<GroupBox Header="Main break options" Margin="0,0,0,10">-->
+                    <Border     BorderBrush="#ccc" 
+                                BorderThickness="1" 
+                                CornerRadius="3"
+                                Margin="3"
+                                Padding=" 10,3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,3">
+                                <TextBlock Text="Enable:" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="input_enable" HorizontalAlignment="Right" IsChecked="false" Click="input_enable_Click" Margin="0,0,129,0"/>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="0,3">
+                                <TextBlock Text="Duration:" VerticalAlignment="Center"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBox x:Name="input_duration" PreviewTextInput="input_PreviewTextInput" IsEnabled="false" Width="100" Text="90"/>
+                                    <TextBlock Text=" (seconds)" PreviewTextInput="input_PreviewTextInput" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="0,3">
+                                <TextBlock Text="Interval:" VerticalAlignment="Center"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <TextBox x:Name="input_interval" IsEnabled="false" Width="100" Text="15"/>
+                                    <TextBlock Text=" (minutes)" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="0,3">
+                                <TextBlock Text="Run when windows starts:" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="input_startup" HorizontalAlignment="Right" IsChecked="false" Margin="0,0,129,0"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <!--</GroupBox>-->
+                </StackPanel>
+            </Grid>
+
+            <!-- Status -->
+            <Grid Grid.Row="3" Margin="15,0">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBlock Text="©by Amin Norollah - Balrug." FontSize="10" MouseDown="copywrite_MouseLeftButtonUp"/>
+                <TextBlock Text="  (source code)" FontSize="10" MouseDown="source_MouseLeftButtonUp"/>
+                </StackPanel>
+                    <TextBlock x:Name="txt_status" Text="The application is active!" HorizontalAlignment="Right" FontSize="10"/>
+            </Grid>
+
+        </Grid>
+    </Border>
+</mah:MetroWindow>
