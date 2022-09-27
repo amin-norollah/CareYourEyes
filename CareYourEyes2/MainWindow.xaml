@@ -116,10 +116,10 @@
             <!-- Status -->
             <Grid Grid.Row="3" Margin="15,0">
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <TextBlock Text="©by Amin Norollah - Balrug." FontSize="10" MouseDown="copywrite_MouseLeftButtonUp"/>
-                <TextBlock Text="  (source code)" FontSize="10" MouseDown="source_MouseLeftButtonUp"/>
+                    <TextBlock Text="©2022 by Amin Norollah - Balrug" FontSize="10" MouseDown="copyright_MouseLeftButtonUp"/>
+                    <TextBlock Text=" (source code)." FontSize="10" MouseDown="source_MouseLeftButtonUp"/>
                 </StackPanel>
-                    <TextBlock x:Name="txt_status" Text="The application is active!" HorizontalAlignment="Right" FontSize="10"/>
+                <TextBlock x:Name="txt_status" Text="The application is active!" HorizontalAlignment="Right" FontSize="10"/>
             </Grid>
 
         </Grid>

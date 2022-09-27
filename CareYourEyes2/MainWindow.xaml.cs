@@ -241,12 +241,14 @@ namespace CareYourEyes
             return !_regex.IsMatch(text);
         }
 
-        private void copywrite_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void copyright_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
-            {
                 System.Diagnostics.Process.Start("https://github.com/amin-norollah");
-            });
+        }
+
+        private void source_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+                System.Diagnostics.Process.Start("https://github.com/amin-norollah/CareYourEyes");
         }
 
         #endregion
