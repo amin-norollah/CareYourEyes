@@ -10,8 +10,6 @@ using System.Text.RegularExpressions;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 
 namespace CareYourEyes
 {
@@ -40,9 +38,6 @@ namespace CareYourEyes
             statusTimer.Interval = 1000;
             statusTimer.Enabled = true;
 
-            //fetch settings
-            FetchSetting();
-
             //initialize NotifyIcon
             tb = new TaskbarIcon();
             Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/CareYourEyes;component/icon.ico")).Stream;
@@ -58,9 +53,16 @@ namespace CareYourEyes
 
             //after sleep or hibernate
             SystemEvents.PowerModeChanged += this.SystemEvents_PowerModeChanged;
+
+            //fetch settings
+            FetchSetting();
         }
 
-        // Specify what you want to happen when the Elapsed event is raised.
+        /// <summary>
+        /// Mian timer
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             try
@@ -80,6 +82,11 @@ namespace CareYourEyes
             catch { }
         }
 
+        /// <summary>
+        /// Status timer
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnStatusTimedEvent(object source, ElapsedEventArgs e)
         {
             try
@@ -105,23 +112,23 @@ namespace CareYourEyes
             catch { }
         }
 
+        /// <summary>
+        /// Power mode change event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
-           if (e.Mode == PowerModes.Resume)
+            if (e.Mode == PowerModes.Resume)
             {
-                //System.Threading.Tasks.Task.Run(() =>
-                //{
-                //    MainWindow mw = new MainWindow();
-                //    mw.ShowDialog();
-                //    mw.Background_Button_Click(null, null);
-                //});
-                //this.Close();
-
                 intervalTimer.Start();
                 statusTimer.Start();
             }
         }
 
+        /// <summary>
+        /// Fatch data from setting
+        /// </summary>
         private void FetchSetting()
         {
             input_enable.IsChecked = Properties.Settings.Default.breakEnable;
@@ -138,6 +145,10 @@ namespace CareYourEyes
             else intervalTimer.Stop();
         }
 
+        /// <summary>
+        /// Set data in the registery
+        /// </summary>
+        /// <param name="isSet"></param>
         private void Registery(bool isSet = false)
         {
             try
@@ -285,6 +296,10 @@ namespace CareYourEyes
         //////////////////////////////////
     }
 
+    /// <summary>
+    /// Customize the timer class to add time left
+    /// property that show when the event will be fired.
+    /// </summary>
     public class TimerPlus : Timer
     {
         private DateTime m_dueTime;

@@ -3,7 +3,6 @@ using MahApps.Metro.Controls;
 using System;
 using System.Timers;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace CareYourEyes.Popups
 {
@@ -34,7 +33,11 @@ namespace CareYourEyes.Popups
             });
         }
 
-        // Specify what you want to happen when the Elapsed event is raised.
+        /// <summary>
+        /// Main timer
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             this.Dispatcher.Invoke(() =>
@@ -49,6 +52,11 @@ namespace CareYourEyes.Popups
             });
         }
 
+        /// <summary>
+        /// Close this window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
