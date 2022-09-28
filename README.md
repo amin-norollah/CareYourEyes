@@ -27,7 +27,7 @@ Please go to [my webpage](http://norollah.com) to contact me.
 
 ## Download
 
-you can download the latest version of CareYourEyes application from link below:
+You can download the latest version of CareYourEyes application from link below:
 
 <a href="https://github.com/amin-norollah/CareYourEyes/blob/master/Download/CareYourEyes.exe">
       Click here to start download
