@@ -4,7 +4,7 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                xmlns:local="clr-namespace:CareYourEyes.Popups"
+                xmlns:local="clr-namespace:CareYourEyes.Popups;assembly=CareYourEyes"
                 mc:Ignorable="d"
                  x:Name="MainPanel"
                  WindowStyle="None"
@@ -46,7 +46,7 @@
                         <!--main-->
                         <StackPanel Grid.Row="1" Margin="40,0,40,0">
                             <TextBlock  Name="txt_timer" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold"/>
-                            <Image Source="/rest-img.png" Width="200"></Image>
+                            <Image Source="pack://application:,,,/CareYourEyes;component/imgs/rest-img.png" Width="200"/>
                             <TextBlock Text="Take a break" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
 
 

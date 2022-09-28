@@ -35,7 +35,7 @@
             <!-- Menu -->
             <Grid Grid.Row="0" Margin="15,5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBlock Text="Care Your Eyes" VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"/>
+                    <TextBlock Text="Care Your Eyes v1.1" VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 

@@ -4,6 +4,7 @@ using Hardcodet.Wpf.TaskbarNotification;
 using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Timers;
@@ -44,8 +45,9 @@ namespace CareYourEyes
 
             //initialize NotifyIcon
             tb = new TaskbarIcon();
-            tb.Icon = new System.Drawing.Icon("icon.ico");
-            tb.ToolTipText = "hello world";
+            Stream iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/CareYourEyes;component/icon.ico")).Stream;
+            tb.Icon = new System.Drawing.Icon(iconStream);
+            tb.ToolTipText = "Care your eyes";
             tb.PopupActivation = PopupActivationMode.DoubleClick;
             tb.Visibility = Visibility.Visible;
             tb.TrayLeftMouseUp += (s, e) =>
@@ -53,6 +55,9 @@ namespace CareYourEyes
                 MainPanel.WindowState = WindowState.Normal;
                 this.ShowInTaskbar = true;
             };
+
+            //after sleep or hibernate
+            SystemEvents.PowerModeChanged += this.SystemEvents_PowerModeChanged;
         }
 
         // Specify what you want to happen when the Elapsed event is raised.
@@ -88,6 +93,7 @@ namespace CareYourEyes
                         {
                             var remained = new DateTime().AddMilliseconds(timeLeft);
                             txt_status.Text = $"Next break in {remained.ToString("HH:mm:ss")}";
+                            tb.ToolTipText = $"Care your eyes - {remained.ToString("HH:mm:ss")}";
                         }
                     }
                     else
@@ -97,6 +103,23 @@ namespace CareYourEyes
                 });
             }
             catch { }
+        }
+
+        private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+           if (e.Mode == PowerModes.Resume)
+            {
+                //System.Threading.Tasks.Task.Run(() =>
+                //{
+                //    MainWindow mw = new MainWindow();
+                //    mw.ShowDialog();
+                //    mw.Background_Button_Click(null, null);
+                //});
+                //this.Close();
+
+                intervalTimer.Start();
+                statusTimer.Start();
+            }
         }
 
         private void FetchSetting()
@@ -198,6 +221,12 @@ namespace CareYourEyes
                     return;
                 }
 
+                if (duration > interval * 60)
+                {
+                    MessageBox.Show("The duration MUST bigger than interval!", "Error", MessageBoxButton.OK);
+                    return;
+                }
+
                 Properties.Settings.Default.breakDuration = duration;
                 Properties.Settings.Default.breakInterval = interval;
             }
@@ -243,12 +272,12 @@ namespace CareYourEyes
 
         private void copyright_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-                System.Diagnostics.Process.Start("https://github.com/amin-norollah");
+            System.Diagnostics.Process.Start("https://github.com/amin-norollah");
         }
 
         private void source_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-                System.Diagnostics.Process.Start("https://github.com/amin-norollah/CareYourEyes");
+            System.Diagnostics.Process.Start("https://github.com/amin-norollah/CareYourEyes");
         }
 
         #endregion
