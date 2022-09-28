@@ -46,7 +46,7 @@
                         <!--main-->
                         <StackPanel Grid.Row="1" Margin="40,0,40,0">
                             <TextBlock  Name="txt_timer" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold"/>
-                            <Image Source="pack://application:,,,/CareYourEyes;component/imgs/rest-img.png" Width="200"/>
+                            <Image Source="pack://application:,,,/CareYourEyes;component/imgs/rest-img.png" Width="200" Margin="0,20"/>
                             <TextBlock Text="Take a break" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold"/>
 
 
