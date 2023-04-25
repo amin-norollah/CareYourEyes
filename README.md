@@ -14,9 +14,9 @@
 </p>
 
 ## About this project
-Protect your eyes from tiredness and overwork. I developed this application to remind you that you supposed to rest at regular intervals.
+This application serves as a reminder to take breaks and avoid eye strain and fatigue caused by overworking. I developed it to help protect your eyes and ensure that you take regular rest intervals.
 
-In the past, I used other applications, which unfortunately are no longer free to use. Therefore, I decided to provide a free application. The features of this software are limited. If you have any suggestions for improving it, please contact me:
+Previously, I used other applications for this purpose, but unfortunately, they are no longer free. That's why I decided to create a free application with limited features. If you have any suggestions for improving the software, please feel free to contact me.
 
 Please go to [my webpage](http://norollah.com) to contact me.
 
